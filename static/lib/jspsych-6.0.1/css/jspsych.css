@@ -1,0 +1,291 @@
+/*
+ * CSS for jsPsych experiments.
+ *
+ * This stylesheet provides minimal styling to make jsPsych
+ * experiments look polished without any additional styles.
+ */
+
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+/* Container holding jsPsych content */
+
+form {
+  text-align: left;
+  width: 600px;
+}
+form input[type="radio"] {
+  margin-left: 20px;
+}
+
+ .jspsych-display-element {
+   display: flex;
+   flex-direction: column;
+   overflow-y: auto;
+ }
+
+ .jspsych-display-element:focus {
+   outline: none;
+ }
+
+ .jspsych-content-wrapper {
+   display: flex;
+   margin: auto;
+   flex: 1 1 100%;
+   width: 900px;
+ }
+
+ .jspsych-content {
+   max-width: 95%; /* this is mainly an IE 10-11 fix */
+   text-align: center;
+   margin: auto; /* this is for overflowing content */
+   margin-top: 20px;
+ }
+
+ .jspsych-top {
+   align-items: flex-start;
+ }
+
+ .jspsych-middle {
+   align-items: center;
+ }
+
+/* fonts and type */
+
+.jspsych-display-element {
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+
+/* Form elements like input fields and buttons */
+
+.jspsych-display-element input[type="text"] {
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+/* borrowing Bootstrap style for btn elements, but combining styles a bit */
+.jspsych-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  cursor: pointer;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.jspsych-btn:hover {
+  background-color: #ddd;
+  border-color: #aaa;
+}
+
+.jspsych-btn:disabled {
+  background-color: #eee;
+  color: #aaa;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* jsPsych progress bar */
+
+#jspsych-progressbar-container {
+  color: #555;
+  border-bottom: 1px solid #dedede;
+  background-color: #f9f9f9;
+  margin-bottom: 1em;
+  text-align: center;
+  padding: 8px 0px;
+  width: 100%;
+  line-height: 1em;
+}
+#jspsych-progressbar-container span {
+  font-size: 14px;
+  padding-right: 14px;
+}
+#jspsych-progressbar-outer {
+  background-color: #eee;
+  width: 50%;
+  margin: auto;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+#jspsych-progressbar-inner {
+  background-color: #aaa;
+  width: 0%;
+  height: 100%;
+}
+
+/* Control appearance of jsPsych.data.displayData() */
+#jspsych-data-display {
+  text-align: left;
+}
+
+.computer_number span {
+  font-family: Monaco, monospace;
+  line-height: 100%;
+  background-color: #eee;
+  padding: 0.2em;
+  letter-spacing: -0.05em;
+  word-break: normal;
+}
+
+
+/*
+--- --- --- --- --- --- --- --- --- ---
+--- --- --- --- --- --- --- --- --- ---
+CSS ADDED FOR ADAPTIVE NUDGING EXPERIMENT
+--- --- --- --- --- --- --- --- --- ---
+--- --- --- --- --- --- --- --- --- ---
+*/
+
+.options{
+  background-color:#dfdfdf;
+  cursor:pointer;
+  border: 3px solid white;
+}
+
+.options-hover{
+  background-color:#b2b2b2;
+  cursor:pointer;
+  border: 3px solid white;
+}
+
+.cells-hover{
+  background-color:#b2b2b2;
+}
+
+.cells-hover-own{
+  background-color:#A3A6CE;
+}
+
+.features{
+  background-color:#E3E9F1;
+  border: 3px solid white;
+}
+
+.covered {
+  cursor:pointer;
+  border: 3px solid white;
+}
+
+.uncovered {
+  border: 3px solid white;
+  font-weight: bold;
+}
+
+.negative {
+  color: red;
+}
+
+.ml-table{
+  float:center;
+  font-size: 18px;
+  text-align:center;
+  table-layout:fixed;
+  width:700px;
+  height: 380px;
+  border-spacing: 0px;
+}
+
+#mouselab-legend {
+  margin-top:40px;
+  float:right;
+  width:200px;
+  height:380px;
+  text-align:center;
+}
+
+#answer-incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+#click-div{
+  padding-top:10px;
+  text-align:center;
+}
+#choice-div{
+  text-align:center;
+  visibility:hidden;
+}
+
+#choice-div-clicked{
+  text-align:center;
+  visibility:hidden;
+}
+
+#continue{
+  margin: 0 auto;
+  display:block;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.costs{
+  visibility:hidden;
+}
+
+.costs_hover{
+  visibility:visible;
+}
+
+.covered_hover {
+  cursor:pointer;
+  border: 3px solid white;
+  background-color:black;
+  color:white
+}
+
+#continue{
+  visibility:hidden;
+}
+
+.outlined {
+  border: 3px solid black;
+}
+
+.no-outline {
+  border: none;
+}
+
+#instructions{
+  text-align:center;
+  padding-bottom:15px;
+}
+
+.consent{
+  text-align:left;
+}
+
+.instructions-less{
+  max-width:75%;
+}
+
+#ml-container{
+  width: 900px;
+  height:380px;
+  margin: auto;
+}
+
+.box {
+  margin-top:5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+  vertical-align: middle;
+}
+
