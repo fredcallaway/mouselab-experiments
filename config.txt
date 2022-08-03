@@ -5,7 +5,7 @@ amt_keywords = Psychology
 lifetime = 24
 us_only = true
 approve_requirement = 95
-contact_email_on_error = cocosci.turk2@gmail.com
+contact_email_on_error = fredcallaway@princeton.edu
 ad_group = Default psiTurk
 organization_name = Princeton University
 browser_exclude_rule = MSIE, mobile, tablet
@@ -17,7 +17,7 @@ table_name = participants
 
 [Server Parameters]
 host = 0.0.0.0
-port = 22362
+port = 22364
 cutoff_time = 30
 logfile = server.log
 loglevel = 2
@@ -29,22 +29,12 @@ secret_key = 'what is this for'
 adserver_revproxy_host = mouselab.herokuapp.com
 
 [Task Parameters]
-experiment_code_version = 1.0
-num_conds = 50
+experiment_code_version = 2.3
+num_conds = 8
 num_counters = 1
 
 [Shell Parameters]
 launch_in_sandbox_mode = false
 bonus_message = "Thanks for participating!"
-
-# If you are not using the psiturk ad server, set `use_psiturk_ad_server` to `false` and point `ad_location` to your proxy server <host> and <port>. Format the ad_location like this:
-#
-#   https://<host>:<port>/ad
-
 use_psiturk_ad_server = false
 ad_location = https://mouselab.herokuapp.com/pub
-
-
-[AWS Access]
-aws_access_key_id = AKIAJIMARJC2VMESQ75A
-aws_secret_access_key = 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

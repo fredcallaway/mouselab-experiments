@@ -6,22 +6,24 @@ async function initializeExperiment() {
   // Setup //
   ///////////
 
-  // var costs = [0, 8]
-  var trial_sets = [1,2,3,4,5]
-  var costs = [0,1,2,4,8]
-  var sigmas = [75, 150]
-  var [sigma, tset, cost] = cartesian(sigmas, trial_sets, costs)[CONDITION]
-
   var searchParams = new URLSearchParams(location.search)
   var set_cond = searchParams.get('condition')
   if (LOCAL) {
-    CONDITION = _.random(49)
+    CONDITION = _.sample([1,3,5,7])  // display_ev = true
+    console.log("setting CONDITION")
   }
+  console.log(CONDITION)
   if (set_cond != undefined) {
     console.log('setting condition to ' + set_cond)
     CONDITION = parseInt(set_cond)
     console.log(CONDITION)
   }
+
+  var sigmas = [75];
+  var trial_sets = [2,4];
+  var costs = [1, 4]
+  var [sigma, tset, cost, reduce_implicit_cost] = cartesian(sigmas, trial_sets, costs, [false, true])[CONDITION];
+  var [display_EV, min_trial_secs] = reduce_implicit_cost ? [true, 20] : [false, 0]
 
   var TRIALS = await $.getJSON(`static/json/trials_${tset}.json`);
 
@@ -33,17 +35,24 @@ async function initializeExperiment() {
     bonus_rate: 0.002,
     n_trial: 20,
     n_comprehension: 3,
-    n_dominating: 3
+    n_dominating: 3,
+    shuffle_trials: false,
+    min_trial_secs: min_trial_secs,
+    display_EV: display_EV
   }
   console.log(PARAMS)
+  console.log(PARAMS.display_EV)
 
 
   for (let k in TRIALS) {
     if (k == "params") continue;
-    // TRIALS[k] = _.shuffle(TRIALS[k])
-    // let trials = TRIALS[k]
-    let trials = _.shuffle(TRIALS[k])
-    for (let t of trials) {
+    var tmp_trials;
+    if (PARAMS.shuffle_trials) {
+      tmp_trials = _.shuffle(TRIALS[k])
+    } else {
+      tmp_trials = TRIALS[k]
+    }
+    for (let t of tmp_trials) {
       let M = t.payoff_matrix
       // console.log(M)
       for (let i in M) {
@@ -52,7 +61,7 @@ async function initializeExperiment() {
         }
       }
     }
-    TRIALS[k] = trials
+    TRIALS[k] = tmp_trials
   }
 
 
@@ -87,6 +96,8 @@ async function initializeExperiment() {
       show_legend: false,
       option_title: '100 Balls',
       option_labels: COLORS,
+      min_trial_secs: min_trial_secs,
+      display_EV: display_EV
     },
     text: {
       type: "html-button-response",
@@ -279,7 +290,7 @@ async function initializeExperiment() {
     return `Your current bonus is $${compute_bonus().toFixed(2)}.`
   }
 
-  var instruct2 = _.range(5).map(i => {
+  var instruct2 = _.range(PARAMS.n_dominating).map(i => {
     var dominating = [false, true, false, true, true][i]
     var trial = (dominating ? TRIALS.dominating : TRIALS.standard).pop()
     return {
@@ -299,8 +310,22 @@ async function initializeExperiment() {
     }
   });
 
+  if (min_trial_secs > 0) {
+      text_str = ['To ensure you give yourself plenty of time to click, <b>you will be unable to gamble for the first '+min_trial_secs+' seconds of each round</b>.']
+  }
+  else {
+      text_str = ''
+  }
+
+  if (display_EV) {
+      text_str2 = ['To make your calculations easy, each option shows the points you can expect to get from that option on average, based on points revealed from clicking and the probabilities of balls. These values change as you click cells.  Therefore, <b>you should always choose the option with the highest value</b> when you are finished clicking.']
+  }
+  else {
+      text_str2 = ''
+  }
+    
   var instruct3 = _.range(3).map(i => {
-    var click_price = `But be careful! Each click will cost you ${make_points(PARAMS.cost)}.`
+    var click_price = `But be careful! <b>Each click will cost you ${make_points(PARAMS.cost)}</b>.`
     return {
       trial_id: `instruct3_${i}`,
       ...TYPE.mouselab,
@@ -313,8 +338,12 @@ async function initializeExperiment() {
 
         ${PARAMS.cost > 0 ? click_price : ''}
 
+        ${text_str}
+
+        ${text_str2}
+
         For these practice rounds (which don't count towards your bonus),
-        <br><b>click on at least 3 cells before making a decision!</b>
+        <br>click on at least 3 cells before making a decision!
         <br>(round ${i+1}/3)
       `),
     }
@@ -408,7 +437,7 @@ async function initializeExperiment() {
         If you have any comments, you can provide them below.
 
         You should receive your bonus within three days. If you don't, please contact us
-        (cocosci.turk2@gmail.com) so that we can make sure you are fully compensated for your work!
+        (cocosci.turk@gmail.com) so that we can make sure you are fully compensated for your work!
       `)
     },
     button_label: 'Submit',
@@ -420,24 +449,27 @@ async function initializeExperiment() {
     ]
   };
 
+
+
   /////////////////////////
   // Experiment timeline //
   /////////////////////////
 
   var timeline = [
-    instruct0,
-    ...instruct1,
-    ...check1,
-    ...check2,
-    ...instruct2,
-    ...instruct3,
-    end_instruct,
-    instruct4,
+     // instruct0,
+     // ...instruct1,
+     // ...check1,
+     // ...check2,
+     // ...instruct2,
+     // ...instruct3,
+     // end_instruct,
+     // instruct4,
     ...trials,
     demographics,
     debrief,
 
   ];
+
 
   return startExperiment({
     timeline,

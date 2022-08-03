@@ -10,13 +10,13 @@ describe what people can do if an error comes up, etc...
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Psychology Experiment - Informed Consent `orm</title>
+    <title>Psychology Experiment - Informed Consent Form</title>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
     <script type="text/javascript">
-      function onexit() {
-          self.close(); // no harm, no foul here
-      }
+    function onexit() {
+      self.close();
+    }
     </script>
   </head>
   <body>
@@ -26,58 +26,115 @@ describe what people can do if an error comes up, etc...
         <hr />
         <div class="legal well">
 
-            <p class="block-text">This HIT is a psychology experiment being conducted by Professor Tom Griffiths's Computational Cognitive Science Lab at the University of California, Berkeley. In order to consent to participate, you MUST meet the following criteria:
-                <ul>
-                    <li>18 years of age or older.</li>
-                    <li>Fluent speaker of English.</li>
-                    <li>Have not participated in this experiment before. </li>
-                </ul>
-            </p>
-            <p class="block-text">
-                 This study is designed to look at how people make decisions. In this task, you will be asked to make choices and answer questions related to those decisions.
-            </p>
 
-            <p class="block-text">
-            Your participation in this research is voluntary. You may refrain from answering any questions that make you uncomfortable and may withdraw your participation at any time without penalty by returning the HIT on MTurk and emailing the experimenter at the address provided below.
-            </p>
-            <p class="block-text">
-            Other than monetary compensation, participating will provide no direct benefits to you. But, we hope that this research will benefit society at large. Many problems that people can solve very easily are very difficult to automate (to have computers solve). By revealing more about how humans learn and think, our research may help others to build and program computers that can solve these kinds of problems.
-            </p>
+          <p class="block-text">
+            TITLE OF RESEARCH: Computational Cognitive Science
+          </p>
 
-            <p class="block-text">
-            Your MTurk worker ID may be connected to individual responses, but we will not be asking for any additional personally identifying information, and we will handle responses as confidentially as possible. We cannot however guarantee the confidentiality of information transmitted over the Internet. We will be keeping data collected as part of this experiment indefinitely.
-            </p>
+          <p class="block-text">
+            PRINCIPAL INVESTIGATOR: Thomas Griffiths
+          </p>
 
-            <p class="block-text">
-                If you have any questions about the study, feel free to contact Tom Griffiths. He can be reached at tom_griffiths@berkeley.edu If you have concerns about your rights as a participant in this experiment, please contact UC Berkeley's Committee for Protection of Human Subjects at (510) 642-7461 or subjects@berkeley.edu.
-            </p>
+          <p class="block-text">
+            PRINCIPAL INVESTIGATOR’S DEPARTMENT: Psychology
+          </p>
 
-            <p class="block-text">
-                By selecting the &quot;consent&quot; option below, I acknowledge that I am 18 or older, that I am a fluent speaker of English, that I have not completed this experiment before, that I have read this consent form, and that I agree to take part in the research.
-            </p>
 
-<!--           <button type="button" class="btn btn-default btn-sm" onClick="window.print();">
-            <span class="glyphicon glyphicon-print"></span> Print a copy
-          </button> -->
+          <p class="block-text">
+            You are being invited to take part in a research study. Before you decide to participate in this study, it is important that you understand why the research is being done and what it will involve. Please take the time to read the following information carefully. Please ask the researcher if there is anything that is not clear or if you need more information.
+          </p>
+
+          <h5>Purpose of the research:</h5>
+          <p class="block-text">
+            This project aims to collect data that can be used to understand how people make decisions.
+          </p>
+
+          <h5>Study Procedures:</h5>
+          <p class="block-text">
+            <!-- <b>WHAT ARE THE REQUIREMENTS FOR THIS SECTION???</b> -->
+            You will be presented with some information (e.g., a written narrative, hypothetical scenarios, or scientific data) and will then be asked to make one or more judgments about that information, or decisions based upon it. In some cases you will be asked to provide explanations or justifications for your responses, typically in the form of a short paragraph. The task will not involve deception or emotionally disturbing materials - just simple questions about categories, causal relationships, and languages.
+            The task you will perform will be one or more of the following: 1. Being shown a set of members of a category, and then asked to indicate which other objects are likely to belong to the category. 2. Being presented a sequence of pictures or sounds, and being asked to predict the next item in the sequence. 3. Being told a set of words in a language, and then making judgments about whether other words belong to the language. 4. Being shown statistical information about the interaction of causes and effects, and then making judgments about the causal relationships involved. 5. Observing a set of events or reading a description or information, and then evaluating the probability of events or statements. 6. Being presented with one or more visual puzzles and re-arranging elements on a screen to solve them.  7. Being presented with visual stimuli and making a quantitative or qualitative judgment on the basis of said stimuli. 8. Interacting with one or more participants about shared stimuli using a chat box.
+          </p>
+<!-- 
+          <p class="block-text">
+            The answers you provide in the task may be used as stimuli for future participants. However, data that would identify you will not be shared with other participants.
+          </p>
+ -->
+
+          <h5>Benefits and Risks:</h5>
+          <p class="block-text">
+            There are no direct benefits to you as a participant; however, by furthering our understanding of human cognition, this research will benefit society by helping with the development of automated systems that can better solve problems that are computationally challenging, but that people can solve easily with little formal guidance.
+          </p>
+
+          <p class="block-text">
+            Risks associated with participation in this study are minimal. You may feel slight discomfort answering some questions, but you may refrain from answering any questions that make you uncomfortable and may withdraw your participation at any time even after completing the experiment without penalty.
+          </p>
+
+          <h5>Confidentiality:</h5>
+          <p class="block-text">
+            We will not be asking for any personally identifying information, and we will handle responses as confidentially as possible. Your name, or your Worker IDs will never be tied to your responses on this survey. However, we cannot guarantee the confidentiality of information transmitted over the Internet. To minimize this risk, data containing anything that might be personally identifiable (e.g. Worker IDs) will be encrypted on transfer and storage and will only be accessible to qualified lab personnel. We will be keeping data collected as part of this experiment indefinitely. This anonymized data (containing neither Worker IDs nor IP addresses) may be shared with the scientific community and corporate sponsors. At the end of the survey you may be asked if you would like to provide your email or MTurk ID to be contacted to participate in future studies., If you choose to provide this information, you may be contacted for participation in future studies.
+          </p>
+
+          <h5>Compensation:</h5>
+          <p class="block-text">
+            For your participation, you will receive $0.50 as well as a performance-dependent bonus.
+            A typical (median) bonus is $2.25, for a total payment of <b>$2.75</b>
+            Your total expected time commitment for this study is: <b>10 &ndash; 20 minutes.</b>.
+
+          <p class="block-text">
+            If you are on Mturk or Prolific and for any reason you do not complete the study (e.g. technical difficulties, or a desire to stop), we will only be able to pay you if you send a message through MTurk/Prolific, or by emailing the researcher.  If you have any questions about the study, feel free to contact the Principal Investigator, Thomas Griffiths, at tomg@princeton.edu.
+          </p>
+
+          <h5>Who to contact with questions:</h5>
+
+          <p class="block-text">
+          <ul>
+            <li>Principal Investigator:
+              <div style="margin-left: 3rem;">
+                Dr. Thomas Griffiths<br />
+                Email: tomg@princeton.edu
+              </div>
+            </li>
+            <li>If you have questions regarding your rights as a research subject, or if problems arise which you do not feel you can discuss with the Investigator, please contact the Institutional Review Board at:
+              <div style="margin-left: 3rem;">
+                Assistant Director, Research Integrity and Assurance<br />
+                Phone: (609) 258-8543<br />
+                Email: irb@princeton.edu
+              </div>
+            </li>
+          </ul>
+          </p>
+
+          <p class="block-text">
+            I understand the information that was presented and that:
+          <ul>
+            <li>My participation is voluntary, and I may withdraw my consent and discontinue participation in the project at any time.  My refusal to participate will not result in any penalty.</li>
+            <li>I do not waive any legal rights or release Princeton University, its agents, or you from liability for negligence.</li>
+          </ul>
+          </p>
+
+          <p class="block-text">
+            I hereby give my consent to be the subject of your research.
+          </p>
         </div>
 
-        <hr />
-        <h4>Do you understand and consent to these terms?</h4>
-        <br />
+      <hr />
+      <h4>Do you understand and consent to these terms?</h4>
+      <br />
 
-        <center>
-          <button type="button" class="btn btn-primary btn-lg" onClick="window.location='/exp?hitId={{ hitid }}&assignmentId={{ assignmentid }}&workerId={{ workerid }}'">
-            <span class="glyphicon glyphicon-ok"></span> I agree
-          </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button type="button" class="btn btn-danger btn-lg" onClick="onexit()">
-            <span class="glyphicon glyphicon-ban-circle"></span> No thanks, I do not want to do this HIT
-          </button>
-        </center>
+      <center>
+        <button type="button" class="btn btn-primary btn-lg" onClick="window.location='/exp?hitId={{ hitid }}&assignmentId={{ assignmentid }}&workerId={{ workerid }}'">
+          <span class="glyphicon glyphicon-ok"></span> I agree
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger btn-lg" onClick="onexit()">
+          <span class="glyphicon glyphicon-ban-circle"></span> No thanks, I do not want to do this study
+        </button>
+      </center>
 
-      </div>
     </div>
+  </div>
   </body>
 </html>

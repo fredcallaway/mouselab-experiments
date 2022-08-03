@@ -8,6 +8,8 @@ from ast import literal_eval
 import os
 import re
 
+BASE_PAY = 0.5
+
 def to_snake_case(name):
     name = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     name = re.sub(r'[.:\/]', '_', name)
@@ -28,10 +30,10 @@ def approve_and_bonus(idents):
             if res['Assignment']['AssignmentStatus'] != 'Approved':
                 client.approve_assignment(AssignmentId=row.assignment_id)
                 print('newly approved     ', end='   ')
-                cost += 0.25
+                cost += BASE_PAY
             else:
                 print('previously approved', end='   ')
-                cost += 0.25
+                cost += BASE_PAY
 
             res = client.list_bonus_payments(AssignmentId=row.assignment_id)
             if res['NumResults'] > 0:
@@ -101,12 +103,15 @@ def main(version, approve):
     pdf, df = get_data(version)
 
     if approve:
-        idents = pd.read_csv(f'data/human_raw/{version}/identifiers.csv').set_index('pid').loc[pdf.index]
+        idents = pd.read_csv(f'data/human_raw/{version}/identifiers.csv').set_index('pid')
+        idents
+        pdf.bonus
         idents['bonus'] = pdf.bonus
+        idents.bonus = idents.bonus.fillna(0)
         approve_and_bonus(idents)
 
-    if version != '1.0':
-        return # just for paying them bonusing
+    # if version != '1.0':
+    #     return # just for paying them bonusing
 
 
     pdf['pass_instruct1'] = df.query('block == "instruct1"')\
